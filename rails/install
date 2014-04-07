@@ -1,0 +1,7 @@
+#!/bin/sh
+
+set -e
+
+apt-get install libsqlite0-dev libxml2-dev libxslt1-dev libpq-dev -qqy
+
+gem install bundler

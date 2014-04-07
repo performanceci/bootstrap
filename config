@@ -1,0 +1,6 @@
+#!/bin/sh
+
+export APP_DIR=/home/application
+export CURRENT_DIR=${APP_DIR}/current
+export USER=ubuntu
+export HOME=/home/ubuntu

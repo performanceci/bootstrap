@@ -1,0 +1,15 @@
+#!/bin/sh
+
+set -e
+
+[[ lsb_release -rs | egrep '^12\.04$' ]] || exit 1
+
+apt-get update -qqy
+apt-get upgrade -qqy
+apt-get dist-upgrade -qqy
+
+apt-get install git-core -qqy
+
+echo "export DEBIAN_FRONTEND=noninteractive" >> /etc/profile
+
+#export CORE_SUCCESS=true

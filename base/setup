@@ -1,0 +1,10 @@
+#!/bin/sh
+
+set -e
+
+source config
+
+mkdir /home/application
+useradd -m ${USER} -s /bin/bash
+chown ${USER}:${USER} /home/application
+echo "${USER} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/${USER}

@@ -1,0 +1,9 @@
+#!/bin/sh
+
+set -e
+
+source config
+
+groupadd docker
+gpasswd -a ${USER} docker
+service docker restart
