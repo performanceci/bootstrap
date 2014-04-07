@@ -4,13 +4,13 @@ set -e
 
 apt-get install linux-image-generic-lts-raring linux-headers-generic-lts-raring -qqy
 
-echo "You must reboot now before you may proceed"
-
-init 6
-
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 36A1D7869245C8950F966E92D8576A8BA88D21E9
 
 echo 'deb http://get.docker.io/ubuntu docker main' > /etc/apt/sources.list.d/docker.list
 
-apt-get update
-apt-get install lxc-docker
+apt-get update -qqy
+apt-get install lxc-docker -qqy
+
+echo "You must reboot for the appropriate changes to take effect"
+
+init 6
