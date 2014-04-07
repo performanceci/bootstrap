@@ -2,7 +2,7 @@
 
 set -e
 
-[[ lsb_release -rs | egrep '^12\.04$' ]] || exit 1
+[[ $(lsb_release -rs | egrep '^12\.04$') ]] || exit 1
 
 apt-get update -qqy
 apt-get upgrade -qqy
