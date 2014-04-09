@@ -1,8 +1,12 @@
 #!/usr/bin/env bash
 
 set -e
+source config
+[[ -d $WORK ]] || mkdir -p $WORK
+[[ -e $WORK/.base_install ]] || ./base/install
 
-P=$(pwd)
+echo "=== Running Ruby 2.1 Install ==="
+
 RUBY_URL='http://cache.ruby-lang.org/pub/ruby/2.1/ruby-2.1.1.tar.gz'
 
 apt-get install build-essential curl -qqy
@@ -14,3 +18,5 @@ pushd $BUILD_DIR
 make
 make install
 popd
+
+touch $WORK/.ruby-2.1_install

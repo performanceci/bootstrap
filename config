@@ -1,6 +1,8 @@
 #!/bin/sh
 
-export APP_DIR=/home/application
+export WORK=${WORK:=~/.work}
+export APP_DIR=${APP_DIR:=/home/application}
 export CURRENT_DIR=${APP_DIR}/current
-export USER=ubuntu
-export HOME=/home/ubuntu
+export NEW_USER=${NEW_USER:=ubuntu}
+export NEW_HOME=${NEW_HOME:=/home/ubuntu}
+export DEBIAN_FRONTEND=noninteractive

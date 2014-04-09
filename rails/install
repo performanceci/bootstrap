@@ -1,7 +1,13 @@
 #!/usr/bin/env bash
 
 set -e
+source config
+[[ -d $WORK ]] || mkdir -p $WORK
+[[ -e $WORK/.ruby-2.0_install ]] || ./ruby-2.0/install
+
+echo "=== Running Rails Install ==="
 
 apt-get install libsqlite0-dev libxml2-dev libxslt1-dev libpq-dev -qqy
-
 gem install bundler
+
+touch $WORK/.rails_install

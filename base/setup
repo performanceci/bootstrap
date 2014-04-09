@@ -3,9 +3,15 @@
 set -e
 
 source config
+[[ -d $WORK ]] || mkdir -p $WORK
+[[ -e $WORK/.base_install ]] || ./base/install
 
-mkdir /home/application
-useradd -m ${USER} -s /bin/bash
-chown ${USER}:${USER} /home/application
-echo "${USER} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/${USER}
-chmod 0440 /etc/sudoers.d/${USER}
+echo "=== Running Base Setup ==="
+
+mkdir $APP_DIR
+useradd -m $NEW_USER -s /bin/bash
+chown ${NEW_USER}:${NEW_USER} $APP_DIR
+echo "${NEW_USER} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/$NEW_USER
+chmod 0440 /etc/sudoers.d/$NEW_USER
+
+touch $WORK/.base_setup

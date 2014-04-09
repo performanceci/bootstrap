@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 
 set -e
+source config
+[[ -d $WORK ]] || mkdir -p $WORK
+[[ -e $WORK/.base_install ]] || ./base/install
+
+echo "=== Running Docker Install ==="
 
 apt-get install linux-image-generic-lts-raring linux-headers-generic-lts-raring -qqy
 
@@ -13,4 +18,6 @@ apt-get install lxc-docker -qqy
 
 echo "You must reboot for the appropriate changes to take effect"
 
-init 6
+#init 6
+
+touch $WORK/.docker_install

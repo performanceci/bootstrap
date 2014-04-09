@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 
 set -e
-
 [[ $(lsb_release -rs | egrep '^12\.04$') ]] || exit 1
+source config
+[[ -d $WORK ]] || mkdir -p $WORK
 
-apt-get update -qqy
-apt-get upgrade -qqy
-apt-get dist-upgrade -qqy
+echo "=== Running Base Install ==="
 
+apt-get update -qqy && apt-get upgrade -qqy && apt-get dist-upgrade -qqy
 apt-get install git-core -qqy
 
 echo "export DEBIAN_FRONTEND=noninteractive" >> /etc/profile
 
-#export CORE_SUCCESS=true
+touch $WORK/.base_install

@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+set -e
+source config
+[[ -d $WORK ]] || mkdir -p $WORK
+[[ -e $WORK/.base_install ]] || ./base/install
+
+echo "=== Running Postgresql 9.3 Install ==="
+
+apt-key adv --keyserver keyserver.ubuntu.com --recv-keys B97B0AFCAA1A47F044F244A07FCC7D46ACCC4CF8
+
+echo "deb http://apt.postgresql.org/pub/repos/apt/ precise-pgdg main" > /etc/apt/sources.list.d/pgdg.list
+
+apt-get update -qqy
+apt-get install install postgresql-9.3 postgresql-client-9.3 postgresql-contrib-9.3 -qqy
+
+touch $WORK/.postgresql-9.3_install

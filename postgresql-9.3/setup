@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+set -e
+source config
+[[ -d $WORK ]] || mkdir -p $WORK
+[[ -e $WORK/.postgresql-9.3_install ]] || ./postgresql-9.3/install
+[[ -e $WORK/.base_setup ]] || ./base/setup
+
+echo "=== Running Postgresql 9.3 Setup ==="
+
+touch $WORK/.postgresql-9.3_setup

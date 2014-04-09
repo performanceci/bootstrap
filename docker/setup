@@ -1,9 +1,14 @@
 #!/usr/bin/env bash
 
 set -e
-
 source config
+[[ -d $WORK ]] || mkdir -p $WORK
+[[ -e $WORK/.docker_install ]] || ./docker/install
+[[ -e $WORK/.base_setup ]] || ./base/setup
 
-groupadd docker
-gpasswd -a ${USER} docker
+echo "=== Running Docker Setup ==="
+
+gpasswd -a ${NEW_USER} docker
 service docker restart
+
+touch $WORK/.docker_setup
